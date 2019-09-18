@@ -21,6 +21,17 @@ Configuration can be provided by CLI flags, environment variables, or a configur
 | **host** | Host to run to. | `--host` | `SPANDX_HOST` | `"host"`  | `localhost` |
 | **port** | Port to run on. | `--port` | `SPANDX_PORT` | `"port"`  | `8008` |
 
+| **ssi** | Port to run on. | `--port` | `SPANDX_PORT` | `"port"`  | `8008` |
+
+host to fetch ssi cache from
+endpoints to fetch from
+directory to store ssi cache
+cache refresh interval
+
+## SSI
+
+While this service doesn't support SSI directly (it doesn't serve files), it does provide 
+
 ## Test with web UI
 
 When you run the deployment service, it will print something like:
