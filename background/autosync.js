@@ -17,12 +17,21 @@ class Autosync {
     console.log("[Autosync] starting..");
 
     // Start syncing each target on it's interval
-    this.targets.forEach(target => {
+    for (let target of this.targets) {
       const handle = setInterval(() => {
         this.syncTarget(target);
       }, parseInt(ms(target.interval)));
       this.intervalHandles.push(handle); // save a reference to the handle in case we want to stop it later
-    });
+    }
+  }
+
+  /**
+   * Force a sync of all targets immediately
+   */
+  async forceSyncAll() {
+    for (let target of this.targets) {
+      await this.syncTarget(target);
+    }
   }
 
   /**
