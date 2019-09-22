@@ -4,10 +4,15 @@
   "webroot": "/var/www/spandx",
   "autosync_targets": [
     {
-      "interval": 10,
+      "interval": "30s",
       "source": {
         "url": "https://access.redhat.com/services/chrome/head",
-        "sub-paths": ["en", "kr", "ja", "zh_CN"]
+        "sub_paths": [
+          "/en",
+          "/kr",
+          "/ja",
+          "/zh_CN"
+        ]
       },
       "dest": {
         "path": "/var/www/spandx/chrome/head",
@@ -15,10 +20,15 @@
       }
     },
     {
-      "interval": 10,
+      "interval": "30s",
       "source": {
         "url": "https://access.redhat.com/services/chrome/header",
-        "sub-paths": ["en", "kr", "ja", "zh_CN"]
+        "sub_paths": [
+          "/en",
+          "/kr",
+          "/ja",
+          "/zh_CN"
+        ]
       },
       "dest": {
         "path": "/var/www/spandx/chrome/header",
@@ -26,10 +36,15 @@
       }
     },
     {
-      "interval": 10,
+      "interval": "30s",
       "source": {
         "url": "https://access.redhat.com/services/chrome/footer",
-        "sub-paths": ["en", "kr", "ja", "zh_CN"]
+        "sub_paths": [
+          "/en",
+          "/kr",
+          "/ja",
+          "/zh_CN"
+        ]
       },
       "dest": {
         "path": "/var/www/spandx/chrome/footer",
