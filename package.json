@@ -23,6 +23,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.0",
     "decompress": "^4.2.0",
     "decompress-bzip2": "^4.0.0",
     "decompress-tarbz2": "^4.1.1",
