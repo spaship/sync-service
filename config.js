@@ -39,7 +39,7 @@ nconf
   });
 
 // Get the config file location before continuing.
-const configFile = nconf.get("config_file");
+const configFile = nconf.get("config-file");
 
 // Now load settings from the config file.
 if (configFile) {
