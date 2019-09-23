@@ -1,23 +1,13 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
 const express = require("express");
-const path = require("path");
 
 const config = require("./config");
-const deploy = require("./api/deploy");
-const list = require("./api/list");
+const routes = require("./routes/routes");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  fs.readFile(path.resolve(__dirname, "index.html"), (err, data) => {
-    res.send(data.toString());
-  });
-});
-
-app.post("/deploy", ...deploy());
-app.get("/list", list());
+routes.register(app);
 
 app.listen(config.get("port"));
 

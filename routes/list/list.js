@@ -1,4 +1,4 @@
-const metadata = require("../util/metadata");
+const metadata = require.main.require("./utils/metadata");
 
 // return an array of expressjs callbacks, the first using multer to support
 // uploading multipart forms (ie, files), and the second to handle extraction
