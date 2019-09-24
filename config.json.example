@@ -1,55 +1,55 @@
 {
-  "host": "spandx.dev",
-  "port": 8001,
   "webroot": "/var/www/spandx",
-  "autosync_targets": [
-    {
-      "interval": "30s",
-      "source": {
-        "url": "https://access.redhat.com/services/chrome/head",
-        "sub_paths": [
-          "/en",
-          "/kr",
-          "/ja",
-          "/zh_CN"
-        ]
+  "autosync": {
+    "targets": [
+      {
+        "interval": "5s",
+        "source": {
+          "url": "https://access.redhat.com/services/chrome/head",
+          "sub_paths": [
+            "/en",
+            "/kr",
+            "/ja",
+            "/zh_CN"
+          ]
+        },
+        "dest": {
+          "path": "/var/www/spandx/chrome/head",
+          "filename": "head.html"
+        }
       },
-      "dest": {
-        "path": "/var/www/spandx/chrome/head",
-        "filename": "head.html"
-      }
-    },
-    {
-      "interval": "30s",
-      "source": {
-        "url": "https://access.redhat.com/services/chrome/header",
-        "sub_paths": [
-          "/en",
-          "/kr",
-          "/ja",
-          "/zh_CN"
-        ]
+      {
+        "interval": "10s",
+        "source": {
+          "url": "https://access.redhat.com/services/chrome/header",
+          "sub_paths": [
+            "/en",
+            "/kr",
+            "/ja",
+            "/zh_CN"
+          ]
+        },
+        "dest": {
+          "path": "/var/www/spandx/chrome/header",
+          "filename": "header.html"
+        }
       },
-      "dest": {
-        "path": "/var/www/spandx/chrome/header",
-        "filename": "header.html"
+      {
+        "interval": "30s",
+        "source": {
+          "url": "https://access.redhat.com/services/chrome/footer",
+          "sub_paths": [
+            "/en",
+            "/kr",
+            "/ja",
+            "/zh_CN"
+          ]
+        },
+        "dest": {
+          "path": "/var/www/spandx/chrome/footer",
+          "filename": "footer.html"
+        }
       }
-    },
-    {
-      "interval": "30s",
-      "source": {
-        "url": "https://access.redhat.com/services/chrome/footer",
-        "sub_paths": [
-          "/en",
-          "/kr",
-          "/ja",
-          "/zh_CN"
-        ]
-      },
-      "dest": {
-        "path": "/var/www/spandx/chrome/footer",
-        "filename": "footer.html"
-      }
-    }
-  ]
+    ]
+  }
 }
