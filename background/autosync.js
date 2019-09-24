@@ -3,6 +3,8 @@ const ms = require("ms");
 const axios = require("axios");
 const shell = require("shelljs");
 const fsp = require("fs").promises;
+const path = require("path");
+const urljoin = require("url-join");
 
 /**
  * Automatically syncs remote url targets to local static files in the background at a set interval
@@ -41,20 +43,20 @@ class Autosync {
    */
   async syncTarget(target) {
     let url = target.source.url;
-    let path = target.dest.path;
-    let file = path + "/" + target.dest.filename;
+    let destPath = target.dest.path;
+    let file = path.join(destPath, target.dest.filename);
 
     // If there are sub-paths defined get them
     if (target.source.sub_paths) {
       for (let subPath of target.source.sub_paths) {
-        url = target.source.url + subPath;
-        path = target.dest.path + subPath;
-        file = path + "/" + target.dest.filename;
+        url = urljoin(target.source.url, subPath);
+        destPath = path.join(target.dest.path, subPath);
+        file = path.join(destPath, target.dest.filename);
 
-        this._syncSingleURL(url, path, file);
+        this._syncSingleURL(url, destPath, file);
       }
     } else {
-      this._syncSingleURL(url, path, file);
+      this._syncSingleURL(url, destPath, file);
     }
   }
 
