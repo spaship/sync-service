@@ -28,9 +28,9 @@ class Autosync {
   /**
    * Force a sync of all targets immediately
    */
-  async forceSyncAll() {
+  forceSyncAll() {
     for (let target of this.targets) {
-      await this.syncTarget(target);
+      this.syncTarget(target);
     }
   }
 
