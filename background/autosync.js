@@ -61,15 +61,23 @@ class Autosync {
   }
 
   async _syncSingleURL(url, path, file) {
+    let response;
+
     try {
       console.log("[Autosync] Getting target url:", url);
-      let response = await axios.get(url);
+      response = await axios.get(url);
+    } catch (error) {
+      console.error("[Autosync] Error fetching remote target:", url, error);
+      return;
+    }
 
+    try {
       if (response) {
         // Make sure dest path exists
-        if (!shell.test("-e", path)) {
+        let exists = await this.isDirectory(path);
+        if (!exists) {
           console.log("[Autosync] Making dir:", path);
-          shell.mkdir("-p", path);
+          await fsp.mkdir(path, {recursive: true});
         }
 
         // Now write destination file
@@ -79,8 +87,20 @@ class Autosync {
         return true;
       }
     } catch (error) {
-      console.error("[Autosync] Error synchronizing target:", error);
+      console.error("[Autosync] Error writing local file:", file, error);
     }
+  }
+
+  async isDirectory(path) {
+    // the result can be either false (from the caught error) or it can be an fs.stats object
+    const result = await fsp.stat(path).catch(err => {
+      if (err.code === "ENOENT") {
+        return false;
+      }
+      throw err;
+    });
+
+    return !result ? result : result.isDirectory();
   }
 }
 
