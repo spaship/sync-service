@@ -2,6 +2,7 @@ const deploy = require("./deploy/deploy");
 const list = require("./list/list");
 const fs = require("fs");
 const path = require("path");
+const forceSyncAll = require("./forceSyncAll/forceSyncAll");
 
 function register(app) {
   app.route("/").get((req, res) => res.redirect("/deploy"));
@@ -16,6 +17,8 @@ function register(app) {
     });
 
   app.route("/list").get(list());
+
+  app.post("/autosync/forceSyncAll", forceSyncAll());
 }
 
 module.exports = { register };

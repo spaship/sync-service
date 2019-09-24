@@ -4,12 +4,16 @@ const express = require("express");
 
 const config = require("./config");
 const routes = require("./routes/routes");
+const Autosync = require("./background/autosync");
 
 const app = express();
+const autosync = new Autosync();
 
 routes.register(app);
 
 app.listen(config.get("port"));
+
+autosync.start();
 
 console.log(` ____  ____   __   __ _  ____  _  _
 / ___)(  _ \\ / _\\ (  ( \\(    \\( \\/ )
