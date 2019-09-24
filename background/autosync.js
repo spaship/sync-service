@@ -45,7 +45,7 @@ class Autosync {
     let file = path + "/" + target.dest.filename;
 
     // If there are sub-paths defined get them
-    if (target.source.sub_paths && target.source.sub_paths.length > 0) {
+    if (target.source.sub_paths) {
       for (let subPath of target.source.sub_paths) {
         url = target.source.url + subPath;
         path = target.dest.path + subPath;
