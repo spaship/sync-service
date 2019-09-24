@@ -11,7 +11,12 @@ const urljoin = require("url-join");
  */
 class Autosync {
   constructor() {
-    this.targets = config.get("autosync_targets");
+    this.autosync = config.get("autosync");
+    if (this.autosync) {
+      this.targets = this.autosync.targets;
+    } else {
+      this.targets = [];
+    }
     this.intervalHandles = [];
   }
 

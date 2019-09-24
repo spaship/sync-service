@@ -39,11 +39,7 @@ nconf
   });
 
 // Get the config file location before continuing.
-let configFile = nconf.get("config_file");
-if (!configFile) {
-  // Check for config.json in root dir
-  configFile = "./config.json";
-}
+const configFile = nconf.get("config_file");
 
 // Now load settings from the config file.
 if (configFile) {
