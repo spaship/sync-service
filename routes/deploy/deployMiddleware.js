@@ -19,10 +19,14 @@ function createDeployMiddleware() {
   const upload = multerUpload.single("upload");
 
   const extract = (req, res) => {
-    const { name, path: appPath, ref } = req.body;
+    const { name, path: appPath, ref, type } = req.body;
     const { path: spaArchive } = req.file;
 
-    deploy({ name, spaArchive, appPath, ref });
+    //TODO: Before deploying look at the 'type' if type === 'app' then validate that spaship.yaml is included in the zip
+    //TODO: If type === 'app' and no spaship.yaml is not included return 403 (bad request) with error message
+    //TODO: Also validate that at a minimum path is defined for both app and bundle types, if not return 403 (bad request)
+
+    deploy({ name, spaArchive, appPath, ref, type });
 
     res.send("SPA uploaded, deployment continuing in the background.");
   };

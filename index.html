@@ -15,6 +15,10 @@
             <input type="text" placeholder="Name" value="" name="name">
             <input type="text" placeholder="Path" value="" name="path">
             <input type="text" placeholder="Git ref (tag or branch or commit hash)" value="" name="ref">
+            <select name="type" id="type">
+              <option id="type_app" value="app" name="app">App</option>
+              <option id="type_bundle" value="bundle" name="bundle">Bundle</option>
+            </select>
             <input type="file" name="upload">
             <input type="submit" value="Deploy" />
         </form>
